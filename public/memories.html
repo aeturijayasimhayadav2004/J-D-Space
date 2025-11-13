@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Our World • Memories</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+    <nav>
+        <div class="navbar">
+            <span class="brand">Our World</span>
+            <ul>
+                <li><a href="home.html">Home</a></li>
+                <li><a href="memories.html" class="active">Memories</a></li>
+                <li><a href="blog.html">Blog</a></li>
+                <li><a href="dates.html">Dates</a></li>
+                <li><a href="special.html">Special Days</a></li>
+                <li><a href="notes.html">Notes</a></li>
+                <li><a href="fun.html">Fun Zone</a></li>
+                <li><a href="#" data-logout>Logout</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <main>
+        <section class="container card">
+            <h1>Our favorite memories</h1>
+            <p>Snapshots of every little adventure. Swap the images with our own photos whenever we want.</p>
+        </section>
+
+        <section class="container gallery">
+            <figure>
+                <a href="assets/gallery1.svg" data-lightbox>
+                    <img src="assets/gallery1.svg" alt="Memory 1">
+                    <figcaption>First polaroid together</figcaption>
+                </a>
+            </figure>
+            <figure>
+                <a href="assets/gallery2.svg" data-lightbox>
+                    <img src="assets/gallery2.svg" alt="Memory 2">
+                    <figcaption>Rainy night laugh attack</figcaption>
+                </a>
+            </figure>
+            <figure>
+                <a href="assets/gallery3.svg" data-lightbox>
+                    <img src="assets/gallery3.svg" alt="Memory 3">
+                    <figcaption>Weekend escape hideaway</figcaption>
+                </a>
+            </figure>
+            <figure>
+                <a href="assets/gallery4.svg" data-lightbox>
+                    <img src="assets/gallery4.svg" alt="Memory 4">
+                    <figcaption>Cherry blossom stroll</figcaption>
+                </a>
+            </figure>
+            <figure>
+                <a href="assets/gallery5.svg" data-lightbox>
+                    <img src="assets/gallery5.svg" alt="Memory 5">
+                    <figcaption>Home-cooked dinner date</figcaption>
+                </a>
+            </figure>
+            <figure>
+                <a href="https://samplelib.com/lib/preview/mp4/sample-5s.mp4" data-lightbox data-type="video">
+                    <img src="assets/gallery6.svg" alt="Memory 6">
+                    <figcaption>Video: goofy dance rehearsal</figcaption>
+                </a>
+            </figure>
+        </section>
+    </main>
+
+    <div class="lightbox" id="lightbox">
+        <div id="lightbox-content"></div>
+        <button class="btn btn-secondary" id="lightbox-close" style="position:absolute;top:30px;right:30px;">Close</button>
+    </div>
+
+    <script src="js/api.js"></script>
+    <script src="js/auth.js"></script>
+    <script src="js/memories.js" defer></script>
+</body>
+</html>

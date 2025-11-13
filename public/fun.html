@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Our World • Fun Zone</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+    <nav>
+        <div class="navbar">
+            <span class="brand">Our World</span>
+            <ul>
+                <li><a href="home.html">Home</a></li>
+                <li><a href="memories.html">Memories</a></li>
+                <li><a href="blog.html">Blog</a></li>
+                <li><a href="dates.html">Dates</a></li>
+                <li><a href="special.html">Special Days</a></li>
+                <li><a href="notes.html">Notes</a></li>
+                <li><a href="fun.html" class="active">Fun Zone</a></li>
+                <li><a href="#" data-logout>Logout</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <main>
+        <section class="container card">
+            <h1>Fun zone</h1>
+            <p>Playful little moments for us to share anytime we visit.</p>
+        </section>
+
+        <section class="container fun-grid">
+            <div class="card">
+                <h2>Spin the date wheel</h2>
+                <div class="wheel" id="date-wheel">
+                    <span>Spin me!</span>
+                </div>
+                <button class="btn" id="spin-btn">Spin</button>
+                <p style="margin-top:1rem;">Tonight we should: <strong id="wheel-result">decide together</strong></p>
+            </div>
+
+            <div class="card" id="quiz-container">
+                <h2>Couple quiz</h2>
+            </div>
+
+            <div class="card">
+                <h2>Next date poll</h2>
+                <p>Tap to cast a vote. Stored in our browser only.</p>
+                <div class="poll-options" id="poll-container"></div>
+            </div>
+        </section>
+    </main>
+
+    <script src="js/api.js"></script>
+    <script src="js/auth.js"></script>
+    <script src="js/fun.js" defer></script>
+</body>
+</html>
