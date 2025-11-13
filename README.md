@@ -36,6 +36,19 @@ For Render (example):
 4. Add an environment variable called `OURWORLD_PASSWORD` with the password you want to share. The server seeds or updates the SQLite credential with this value on boot.
 5. Deploy. Render provisions a public HTTPS URL you can copy/paste to your partner. Log in with the password from step 4.
 
+#### Render step-by-step walkthrough
+
+1. **Create a Render account** (or sign in) at [https://render.com](https://render.com).
+2. On the Render dashboard, click the **New +** button in the top-right corner and choose **Blueprint**.
+3. When prompted, connect your GitHub account and authorize Render to read the repository that contains this project.
+4. In the *Select Repository* step, choose the GitHub repo where you merged this code and press **Connect**.
+5. Render opens a preview of `render.yaml`. Give the service a name (for example, `our-world`) and confirm the region.
+6. In the **Environment Variables** panel, add a key named `OURWORLD_PASSWORD` and set its value to the secret you and your partner will use to log in.
+7. Click **Apply** to start the first deploy. Render queues a build that installs dependencies (the step succeeds even though the requirements file is empty) and then runs `python server.py`.
+8. Once the status changes to **Live**, click the service name to open its dashboard, then copy the **Public URL** shown near the top. This is the shareable HTTPS link for the site.
+9. Visit the URL yourself to make sure the login page loads, then sign in with the password you configured in step 6 to verify everything works before sending the link to your partner.
+10. If you ever need to rotate the password, update the `OURWORLD_PASSWORD` environment variable in the Render dashboard and click **Save Changes**—the next restart automatically rehashes the new secret.
+
 > If you prefer another host, the only requirement is that it runs `python server.py` and exposes port 8000 (or any port you configure in `run_server`).
 
 ### Customizing the password
