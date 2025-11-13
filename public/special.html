@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Our World • Special Days</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+    <nav>
+        <div class="navbar">
+            <span class="brand">Our World</span>
+            <ul>
+                <li><a href="home.html">Home</a></li>
+                <li><a href="memories.html">Memories</a></li>
+                <li><a href="blog.html">Blog</a></li>
+                <li><a href="dates.html">Dates</a></li>
+                <li><a href="special.html" class="active">Special Days</a></li>
+                <li><a href="notes.html">Notes</a></li>
+                <li><a href="fun.html">Fun Zone</a></li>
+                <li><a href="#" data-logout>Logout</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <main>
+        <section class="container card">
+            <h1>Milestones &amp; countdowns</h1>
+            <p>Every precious date in one place. Count the seconds until our next celebration.</p>
+        </section>
+
+        <section class="container card">
+            <h2>Our story timeline</h2>
+            <div class="timeline" id="special-timeline"></div>
+        </section>
+
+        <section class="container card">
+            <h2>Countdowns</h2>
+            <div class="countdown-grid" id="countdown-grid"></div>
+        </section>
+    </main>
+
+    <script src="js/api.js"></script>
+    <script src="js/auth.js"></script>
+    <script src="js/special.js" defer></script>
+</body>
+</html>
