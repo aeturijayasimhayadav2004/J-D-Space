@@ -1,6 +1,7 @@
 from __future__ import annotations
 
 import json
+import os
 import secrets
 import sqlite3
 import time
@@ -170,14 +171,30 @@ def seed_database(conn: sqlite3.Connection) -> None:
         row = conn.execute(f'SELECT COUNT(*) AS count FROM {table}').fetchone()
         return bool(row and row['count'] == 0)
 
+    password = os.getenv('OURWORLD_PASSWORD', 'starlight')
+
     if table_empty('users'):
         salt = secrets.token_hex(16)
-        password = 'starlight'
         digest = hashlib.pbkdf2_hmac('sha256', password.encode('utf-8'), bytes.fromhex(salt), 120_000)
         conn.execute(
             'INSERT INTO users (username, password_hash, salt) VALUES (?, ?, ?)',
             ('couple', digest.hex(), salt)
         )
+    else:
+        row = conn.execute(
+            'SELECT password_hash, salt FROM users WHERE username = ?',
+            ('couple',)
+        ).fetchone()
+        if row:
+            current_salt = bytes.fromhex(row['salt'])
+            current_digest = hashlib.pbkdf2_hmac('sha256', password.encode('utf-8'), current_salt, 120_000).hex()
+            if not hmac.compare_digest(current_digest, row['password_hash']):
+                new_salt = secrets.token_hex(16)
+                new_digest = hashlib.pbkdf2_hmac('sha256', password.encode('utf-8'), bytes.fromhex(new_salt), 120_000)
+                conn.execute(
+                    'UPDATE users SET password_hash = ?, salt = ? WHERE username = ?',
+                    (new_digest.hex(), new_salt, 'couple')
+                )
 
     if table_empty('blog_posts'):
         posts = [

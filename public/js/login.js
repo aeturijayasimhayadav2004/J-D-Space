@@ -34,7 +34,12 @@ document.addEventListener('DOMContentLoaded', function () {
             localStorage.setItem('allowed', 'true');
             window.location.href = 'home.html';
         } catch (error) {
-            feedback.textContent = error.message || 'Incorrect password. Try again?';
+            const isNetworkError = error.message === 'Failed to fetch' || error.message === 'NetworkError when attempting to fetch resource.';
+            if (isNetworkError) {
+                feedback.textContent = 'Unable to reach the server. Make sure `python server.py` is running or that your deployment is live.';
+            } else {
+                feedback.textContent = error.message || 'Incorrect password. Try again?';
+            }
             feedback.classList.add('error');
         }
     });
