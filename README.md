@@ -32,14 +32,15 @@ For Render (example):
 
 1. Push your latest changes to GitHub.
 2. Create a new **Web Service** on Render and connect your repository.
-3. Choose the **Python** environment, set the build command to `pip install -r requirements.txt || true` (no external deps, so installs succeed even though the file is empty), and the start command to `python server.py`.
-4. Render provisions a public HTTPS URL. Log in with `starlight`, and share that link exclusively with the people you trust.
+3. When Render detects the `render.yaml` file, pick **Use Render Blueprint** so the settings are pre-filled. (If you prefer to configure manually, choose the **Python** environment, set the build command to `pip install -r requirements.txt || true`, and the start command to `python server.py`.)
+4. Add an environment variable called `OURWORLD_PASSWORD` with the password you want to share. The server seeds or updates the SQLite credential with this value on boot.
+5. Deploy. Render provisions a public HTTPS URL you can copy/paste to your partner. Log in with the password from step 4.
 
 > If you prefer another host, the only requirement is that it runs `python server.py` and exposes port 8000 (or any port you configure in `run_server`).
 
 ### Customizing the password
 
-You can change the shared secret by editing `password = 'starlight'` in `server.py` inside the `seed_database` function and deleting `db/ourworld.db` so the new value seeds on the next startup. Everyone must then use the new password to log in.
+You can change the shared secret by setting the `OURWORLD_PASSWORD` environment variable before launching the server. The app will rewrite the stored hash if it detects a different password on startup. If you prefer to hardcode it, edit `password = 'starlight'` in `server.py` inside the `seed_database` function.
 
 ## Features
 
